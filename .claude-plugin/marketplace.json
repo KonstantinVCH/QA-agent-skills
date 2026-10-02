@@ -1,0 +1,61 @@
+{
+  "name": "qa-agent-skills",
+  "owner": {
+    "name": "KonstantinVCH",
+    "url": "https://github.com/KonstantinVCH"
+  },
+  "metadata": {
+    "description": "Русскоязычные скиллы для QA-инженеров: тестирование задачи из Jira, критерии приёмки, баг-репорты, отчёты, тест-кейсы Allure TestOps, WireMock, логи OpenSearch, деплой Bamboo, LLM-wiki в Obsidian.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "qa-skills-ru",
+      "description": "QA-цикл на русском: тест-план и прогон по задаче из Jira, экспериментальный автономный QA-конвейер из субагентов, критерии приёмки, баг-репорт, отчёт о тестировании, тест-кейсы Allure TestOps, WireMock-стабы, логи OpenSearch/Jaeger, деплой на стенд через Bamboo.",
+      "source": "./",
+      "strict": false,
+      "category": "testing",
+      "keywords": [
+        "qa",
+        "testing",
+        "test-plan",
+        "acceptance-criteria",
+        "bug-report",
+        "allure",
+        "wiremock",
+        "opensearch",
+        "bamboo",
+        "russian"
+      ],
+      "skills": [
+        "./skills/qa-task-testing-ru",
+        "./skills/qa-autopilot-ru",
+        "./skills/acceptance-criteria-ru",
+        "./skills/bug-report-ru",
+        "./skills/test-session-report-ru",
+        "./skills/allure-testops-cases-ru",
+        "./skills/wiremock-stubs-ru",
+        "./skills/opensearch-logs-ru",
+        "./skills/bamboo-deploy-ru"
+      ]
+    },
+    {
+      "name": "obsidian-llm-wiki-ru",
+      "description": "База знаний команды в Obsidian по паттерну Karpathy LLM Wiki: wiki-first перед работой, ingest с двусторонними ссылками, query, lint, audit.",
+      "source": "./",
+      "strict": false,
+      "category": "productivity",
+      "keywords": [
+        "obsidian",
+        "knowledge-base",
+        "llm-wiki",
+        "karpathy",
+        "second-brain",
+        "russian"
+      ],
+      "skills": [
+        "./skills/obsidian-llm-wiki-ru"
+      ]
+    }
+  ]
+}
