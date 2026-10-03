@@ -13,20 +13,20 @@ npx skills add KonstantinVCH/QA-agent-skills
 
 | Вы пишете | Агент делает | Скилл |
 |---|---|---|
-| «Протестируй PROJ-123» | Читает задачу и документацию, находит все PR и составляет матрицу проверок. Присылает план и ждёт вашего «go». Только после этого прогоняет проверки на стенде и откатывает свои тестовые данные. | `qa-task-testing-ru` |
-| «Напиши критерии приёмки к PROJ-123» | Собирает таблицу критериев по задаче, коду и документации, отмечает риски, публикует комментарий в Jira после вашего подтверждения. | `acceptance-criteria-ru` |
-| «Оформи баг» | Пишет баг-репорт в два слоя: короткий для аналитика и подробный для разработчика с местом в коде, трейсом и шагами. | `bug-report-ru` |
-| «Оформи итоги тестирования» | Собирает отчёт о сессии для комментария в задаче: стенд и версии, что проверено и как, найденные баги, проверки после выкатки на прод. | `test-session-report-ru` |
-| «Заведи тест-кейс в Allure» | Создаёт мануальный тест-кейс через REST TestOps: шаги деревом, ожидаемые результаты, общие шаги, связь с задачей. | `allure-testops-cases-ru` |
-| «Выкати задачу на стенд 2» | Создаёт релизы в Bamboo и выкатывает сервисы параллельно. На прод-окружения не катит. | `bamboo-deploy-ru` |
-| «Найди ошибку в логах по traceId» | Ищет записи в OpenSearch/Kibana, сверяет с трейсом Jaeger, разбирает стектрейс. | `opensearch-logs-ru` |
-| «Сделай мок партнёра на ошибку 500» | Пишет WireMock-стаб по контракту из кода и спецификации, проверяет по журналу запросов, что сервис ходит в мок. | `wiremock-stubs-ru` |
+| «Протестируй PROJ-123» | Читает задачу и документацию, находит все PR и составляет матрицу проверок. Присылает план и ждёт вашего «go». Только после этого прогоняет проверки на стенде и откатывает свои тестовые данные. | `qa-task-testing` |
+| «Напиши критерии приёмки к PROJ-123» | Собирает таблицу критериев по задаче, коду и документации, отмечает риски, публикует комментарий в Jira после вашего подтверждения. | `acceptance-criteria` |
+| «Оформи баг» | Пишет баг-репорт в два слоя: короткий для аналитика и подробный для разработчика с местом в коде, трейсом и шагами. | `bug-report` |
+| «Оформи итоги тестирования» | Собирает отчёт о сессии для комментария в задаче: стенд и версии, что проверено и как, найденные баги, проверки после выкатки на прод. | `test-session-report` |
+| «Заведи тест-кейс в Allure» | Создаёт мануальный тест-кейс через REST TestOps: шаги деревом, ожидаемые результаты, общие шаги, связь с задачей. | `allure-testops-cases` |
+| «Выкати задачу на стенд 2» | Создаёт релизы в Bamboo и выкатывает сервисы параллельно. На прод-окружения не катит. | `bamboo-deploy` |
+| «Найди ошибку в логах по traceId» | Ищет записи в OpenSearch/Kibana, сверяет с трейсом Jaeger, разбирает стектрейс. | `opensearch-logs` |
+| «Сделай мок партнёра на ошибку 500» | Пишет WireMock-стаб по контракту из кода и спецификации, проверяет по журналу запросов, что сервис ходит в мок. | `wiremock-stubs` |
 
 Полный список из 10 скиллов — [ниже](#все-скиллы).
 
 ## Как выглядит результат
 
-Первый слой баг-репорта из `bug-report-ru` (пример из скилла, домен вымышленный):
+Первый слой баг-репорта из `bug-report` (пример из скилла, домен вымышленный):
 
 ```text
 Даты публикации товара уходят партнёру без часового пояса
@@ -58,7 +58,7 @@ npx skills add KonstantinVCH/QA-agent-skills
   персональным токеном. С Jira Cloud и Confluence Cloud работают не все скрипты.
 - **CI.** Скилл деплоя написан под Atlassian Bamboo.
 - **Агент.** Формат [Agent Skills](https://agentskills.io) понимают Claude Code, Codex, Cursor и OpenCode.
-  `qa-autopilot-ru` экспериментальный и работает только в Claude Code: ему нужны субагенты и хуки.
+  `qa-autopilot` экспериментальный и работает только в Claude Code: ему нужны субагенты и хуки.
 - **Окружение.** Нужны curl и python3. MCP-серверы Jira, Confluence и баз данных подключаются по желанию.
 
 Методика проверена в работе. Скрипты после удаления привязки к исходному проекту прогнаны на моках;
@@ -70,17 +70,17 @@ npx skills add KonstantinVCH/QA-agent-skills
 
    ```bash
    npx skills add KonstantinVCH/QA-agent-skills
-   npx skills add KonstantinVCH/QA-agent-skills --skill qa-task-testing-ru
+   npx skills add KonstantinVCH/QA-agent-skills --skill qa-task-testing
    ```
 
    В Claude Code можно подключить репозиторий как маркетплейс плагинов:
 
    ```bash
    claude plugin marketplace add KonstantinVCH/QA-agent-skills
-   claude plugin install qa-skills-ru@qa-agent-skills
+   claude plugin install qa-skills@qa-agent-skills
    ```
 
-   Ещё один плагин — `obsidian-llm-wiki-ru`.
+   Ещё один плагин — `obsidian-llm-wiki`.
 
 2. Задайте переменные окружения один раз. Имена общие для всех скиллов:
    `JIRA_URL`, `JIRA_TOKEN`, `CONFLUENCE_URL`, `CONFLUENCE_TOKEN`, `BITBUCKET_URL`, `BITBUCKET_TOKEN`.
@@ -96,27 +96,27 @@ npx skills add KonstantinVCH/QA-agent-skills
 
 | Скилл | Что делает |
 |---|---|
-| [qa-task-testing-ru](skills/qa-task-testing-ru) | Полный цикл по задаче: задача и документация, карта изменений по PR, матрица проверок, план на согласование, прогон на стенде, откат тестовых данных, баги и тест-кейсы. |
-| [qa-autopilot-ru](skills/qa-autopilot-ru) | **Экспериментальный:** публичная версия целиком ещё не запускалась. Тот же цикл силами шести субагентов: план проверяет агент-ревьюер, баги и тест-кейсы уходят наружу после одобрения человека. Хуки блокируют запись в Jira и Confluence, деплой вне списка стендов и `git push`. |
-| [acceptance-criteria-ru](skills/acceptance-criteria-ru) | Критерии приёмки по задаче: таблица, риски по сигналам из кода, сценарии Given/When/Then. |
-| [bug-report-ru](skills/bug-report-ru) | Баг-репорт в два слоя: для аналитика и для разработчика. |
-| [test-session-report-ru](skills/test-session-report-ru) | Итоговый отчёт о сессии тестирования для комментария в задаче. |
-| [allure-testops-cases-ru](skills/allure-testops-cases-ru) | Мануальные тест-кейсы в Allure TestOps через REST, с описанием 17 ловушек API. |
-| [wiremock-stubs-ru](skills/wiremock-stubs-ru) | WireMock-стабы для интеграций: контракт, негативные сценарии, вебхуки, проверка по журналу. |
-| [opensearch-logs-ru](skills/opensearch-logs-ru) | Логи Kubernetes-сервисов в OpenSearch/Kibana, связка с трейсами Jaeger, разбор упавшего деплоя. |
-| [bamboo-deploy-ru](skills/bamboo-deploy-ru) | Релизы в Bamboo и параллельная выкатка на тестовый стенд, пре-чек миграций Flyway. |
+| [qa-task-testing](skills/qa-task-testing) | Полный цикл по задаче: задача и документация, карта изменений по PR, матрица проверок, план на согласование, прогон на стенде, откат тестовых данных, баги и тест-кейсы. |
+| [qa-autopilot](skills/qa-autopilot) | **Экспериментальный:** публичная версия целиком ещё не запускалась. Тот же цикл силами шести субагентов: план проверяет агент-ревьюер, баги и тест-кейсы уходят наружу после одобрения человека. Хуки блокируют запись в Jira и Confluence, деплой вне списка стендов и `git push`. |
+| [acceptance-criteria](skills/acceptance-criteria) | Критерии приёмки по задаче: таблица, риски по сигналам из кода, сценарии Given/When/Then. |
+| [bug-report](skills/bug-report) | Баг-репорт в два слоя: для аналитика и для разработчика. |
+| [test-session-report](skills/test-session-report) | Итоговый отчёт о сессии тестирования для комментария в задаче. |
+| [allure-testops-cases](skills/allure-testops-cases) | Мануальные тест-кейсы в Allure TestOps через REST, с описанием 17 ловушек API. |
+| [wiremock-stubs](skills/wiremock-stubs) | WireMock-стабы для интеграций: контракт, негативные сценарии, вебхуки, проверка по журналу. |
+| [opensearch-logs](skills/opensearch-logs) | Логи Kubernetes-сервисов в OpenSearch/Kibana, связка с трейсами Jaeger, разбор упавшего деплоя. |
+| [bamboo-deploy](skills/bamboo-deploy) | Релизы в Bamboo и параллельная выкатка на тестовый стенд, пре-чек миграций Flyway. |
 
 ### База знаний
 
 | Скилл | Что делает |
 |---|---|
-| [obsidian-llm-wiki-ru](skills/obsidian-llm-wiki-ru) | База знаний команды в Obsidian по схеме [LLM Wiki Андрея Карпатого](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): агент читает её перед работой и дописывает находки после. |
+| [obsidian-llm-wiki](skills/obsidian-llm-wiki) | База знаний команды в Obsidian по схеме [LLM Wiki Андрея Карпатого](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f): агент читает её перед работой и дописывает находки после. |
 
 ## Как скиллы связаны
 
-`qa-task-testing-ru` вызывает остальные по ходу работы. Баг оформляет через `bug-report-ru`, итог — через
-`test-session-report-ru`, тест-кейсы — через `allure-testops-cases-ru`. На стенде он пользуется
-`bamboo-deploy-ru`, `wiremock-stubs-ru` и `opensearch-logs-ru`. Каждый скилл можно поставить отдельно.
+`qa-task-testing` вызывает остальные по ходу работы. Баг оформляет через `bug-report`, итог — через
+`test-session-report`, тест-кейсы — через `allure-testops-cases`. На стенде он пользуется
+`bamboo-deploy`, `wiremock-stubs` и `opensearch-logs`. Каждый скилл можно поставить отдельно.
 
 ## Обратная связь
 

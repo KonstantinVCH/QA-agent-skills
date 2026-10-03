@@ -1,0 +1,50 @@
+{
+  "_comment": "Хуки автопилота qa-autopilot. Добавь содержимое ключа hooks в ~/.claude/settings.json (раздел hooks), слив с уже существующими хуками. Путь рассчитан на установку скилла в ~/.claude/skills/qa-autopilot; при другом расположении поправь путь. Скрипты инертны, пока нет активного прогона (~/.claude/qa-autopilot/active.json). На Windows команды выполняются в Git Bash — python должен быть в PATH (или замени python на python3/py).",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          { "type": "command", "command": "python \"$HOME/.claude/skills/qa-autopilot/scripts/guard_external_writes.py\"", "timeout": 10 }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          { "type": "command", "command": "python \"$HOME/.claude/skills/qa-autopilot/scripts/guard_external_writes.py\"", "timeout": 10 }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "qa-.*",
+        "hooks": [
+          { "type": "command", "command": "python \"$HOME/.claude/skills/qa-autopilot/scripts/validate_check_report.py\"", "timeout": 15 }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "python \"$HOME/.claude/skills/qa-autopilot/scripts/autopilot.py\" check-stop", "timeout": 10 }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|compact",
+        "hooks": [
+          { "type": "command", "command": "python \"$HOME/.claude/skills/qa-autopilot/scripts/autopilot.py\" bootstrap", "timeout": 10 }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "qa-.*",
+        "hooks": [
+          { "type": "command", "command": "python \"$HOME/.claude/skills/qa-autopilot/scripts/autopilot.py\" bootstrap", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

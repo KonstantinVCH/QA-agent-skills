@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "qa-skills-ru",
+      "name": "qa-skills",
       "description": "QA-цикл на русском: тест-план и прогон по задаче из Jira, экспериментальный автономный QA-конвейер из субагентов, критерии приёмки, баг-репорт, отчёт о тестировании, тест-кейсы Allure TestOps, WireMock-стабы, логи OpenSearch/Jaeger, деплой на стенд через Bamboo.",
       "source": "./",
       "strict": false,
@@ -28,19 +28,19 @@
         "russian"
       ],
       "skills": [
-        "./skills/qa-task-testing-ru",
-        "./skills/qa-autopilot-ru",
-        "./skills/acceptance-criteria-ru",
-        "./skills/bug-report-ru",
-        "./skills/test-session-report-ru",
-        "./skills/allure-testops-cases-ru",
-        "./skills/wiremock-stubs-ru",
-        "./skills/opensearch-logs-ru",
-        "./skills/bamboo-deploy-ru"
+        "./skills/qa-task-testing",
+        "./skills/qa-autopilot",
+        "./skills/acceptance-criteria",
+        "./skills/bug-report",
+        "./skills/test-session-report",
+        "./skills/allure-testops-cases",
+        "./skills/wiremock-stubs",
+        "./skills/opensearch-logs",
+        "./skills/bamboo-deploy"
       ]
     },
     {
-      "name": "obsidian-llm-wiki-ru",
+      "name": "obsidian-llm-wiki",
       "description": "База знаний команды в Obsidian по паттерну Karpathy LLM Wiki: wiki-first перед работой, ingest с двусторонними ссылками, query, lint, audit.",
       "source": "./",
       "strict": false,
@@ -54,7 +54,7 @@
         "russian"
       ],
       "skills": [
-        "./skills/obsidian-llm-wiki-ru"
+        "./skills/obsidian-llm-wiki"
       ]
     }
   ]
