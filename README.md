@@ -84,8 +84,9 @@ npx skills add KonstantinVCH/QA-agent-skills
 
 2. Задайте переменные окружения один раз. Имена общие для всех скиллов:
    `JIRA_URL`, `JIRA_TOKEN`, `CONFLUENCE_URL`, `CONFLUENCE_TOKEN`, `BITBUCKET_URL`, `BITBUCKET_TOKEN`.
-   Остальные (`BAMBOO_URL`, `ALLURE_URL`, `JAEGER_URL`, `OPENSEARCH_URL`, `WIREMOCK_URL`) нужны
-   только соответствующим скиллам.
+   Остальные нужны только своим скиллам: `BAMBOO_URL` и `BAMBOO_TOKEN`, `ALLURE_URL`,
+   `ALLURE_TOKEN` и `ALLURE_PROJECT_ID`, `JAEGER_URL`, `OPENSEARCH_URL`, `WIREMOCK_URL`. Полный список
+   с примерами — в разделе «Настройка под проект» каждого `SKILL.md`.
 
 3. Заполните `references/project-config.md` в скиллах, которыми пользуетесь: ключ проекта, стенды,
    список сервисов, соглашения команды. Токены в этот файл не пишите.
