@@ -5,7 +5,7 @@ license: MIT
 compatibility: "Claude Code с субагентами (Agent tool) и хуками; python3 (только stdlib); curl; доступ на чтение к трекеру задач (Jira), тестовому стенду и его БД. Опционально: Confluence, Bitbucket, Bamboo, Jaeger, OpenSearch/Kibana, WireMock, Allure TestOps, база знаний Obsidian."
 metadata:
   author: KonstantinVCH
-  version: "0.1.0"
+  version: "0.1.1"
   language: ru
 ---
 

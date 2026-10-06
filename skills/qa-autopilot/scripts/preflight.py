@@ -112,7 +112,11 @@ def main():
     ap.add_argument("--skip-net", action="store_true", help="только наличие переменных, без HTTP")
     a = ap.parse_args()
     run_dir = Path(a.run_dir)
-    st = json.loads((run_dir / "state.json").read_text(encoding="utf-8"))
+    state = run_dir / "state.json"
+    if not state.exists():
+        sys.exit(f"state.json не найден в {run_dir}. Сначала создай прогон: "
+                 f"autopilot.py init --task <KEY> --stand <STAND>, и передай напечатанный им каталог.")
+    st = json.loads(state.read_text(encoding="utf-8"))
 
     rows, fails = [], []
 
